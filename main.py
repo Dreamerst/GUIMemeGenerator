@@ -48,6 +48,8 @@ def get_random_gif_url(q=""):
             gif_url = gif["media_formats"]["gif"]["url"]
             logging.info(f"Получен URL GIF: {gif_url}")
             return gif_url
+        else:
+            RequestError.ApiRequestError(response.status_code)
 
 
 class GifViewer(QWidget):
@@ -97,8 +99,8 @@ class GifViewer(QWidget):
             self.gif_label.setMovie(gif_movie)
             gif_movie.start()
         else:
-            logging.error(f"Ошибка запроса к API")
-            RequestError.ApiRequestError()
+            logging.error("Ошибка запроса к API")
+            self.gif_label.setText("Ошибка запроса к API")
 
 
 if __name__ == "__main__":
