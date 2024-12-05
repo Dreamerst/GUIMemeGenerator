@@ -33,7 +33,7 @@ def get_random_gif_url(q=""):
         params = {
             "q": query,
             "key": API_KEY,
-            "limit": 30,
+            "limit": 50,
             "pos": random_offset,
         }
         logging.info(f"Отправка запроса к API с параметрами: {params}")
